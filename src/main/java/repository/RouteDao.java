@@ -32,10 +32,10 @@ public class RouteDao {
         return null;
     }
 
-    public boolean insert(Route student) {
+    public boolean insert(Route route) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.save(student);
+            session.saveOrUpdate(route);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -43,7 +43,8 @@ public class RouteDao {
         return false;
     }
 
-    public boolean removeRoster(int id) {
+
+    public boolean removeRoute(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();

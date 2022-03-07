@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java" %>
 
 <html>
 <head>
@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container ">
   <%-- <a type="button" class="btn btn-primary btn-md ms-4 mt-5" href="${pageContext.request.contextPath}/add-driver">Add Driver</a>--%>
   <table class="table table-striped table-dark" id="table-data">
     <thead>
@@ -52,15 +52,14 @@
            </c:forEach>
            </tbody>
          </table>
-
-
-
         </td>
 
       </tr>
     </c:forEach>
     </tbody>
   </table>
+    <a type="button" class="btn btn-primary"
+       href="">Add</a>
 </div>
 
 </body>

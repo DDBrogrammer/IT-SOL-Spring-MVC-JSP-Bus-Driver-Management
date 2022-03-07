@@ -67,7 +67,7 @@ public class RosterDao {
     public boolean insert(Roster roster) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.save(roster);
+            session.saveOrUpdate(roster);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {

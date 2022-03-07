@@ -9,6 +9,6 @@ public class TestSpring {
     @RequestMapping("/home")
     public String getHomePage(ModelMap model){
         model.addAttribute("message", "World");
-      return "resources/index";
+      return "resources/views/index";
     }
 }

@@ -26,6 +26,9 @@ public class RouteService {
         route.setId(id);
         return routeDao.insert(route);
     }
+  public boolean removeRoute(int id) {
+    return routeDao.removeRoute(id);
+  }
 
 
 

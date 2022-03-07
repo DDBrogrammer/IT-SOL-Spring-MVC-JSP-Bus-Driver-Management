@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java" %>
 <html>
 <head>
   <title>Title</title>
@@ -28,7 +28,7 @@
           <a type="button" class="btn btn-primary"
              href="">Update</a>
           <a type="button" class="btn btn-danger"
-             href="">Delete</a>
+             href="${pageContext.request.contextPath}/route/delete?id=${route.id}">Delete</a>
         </td>
         <td class="id">${route.id}</td>
         <td class="fullName">${route.distance}</td>
@@ -37,6 +37,9 @@
     </c:forEach>
     </tbody>
   </table>
+
+    <a type="button" class="btn btn-primary "
+       href="${pageContext.request.contextPath}/route/add">Add</a>
 </div>
 
 </body>

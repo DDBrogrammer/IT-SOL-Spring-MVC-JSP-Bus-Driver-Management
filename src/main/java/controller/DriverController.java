@@ -1,10 +1,13 @@
 package controller;
 
+import entity.Driver;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import service.DriverService;
 
 @Controller
@@ -24,11 +27,23 @@ public class DriverController {
     return "redirect:/driver";
   }
 
-  @RequestMapping(value = "/driver/update", method = RequestMethod.GET)
-  public String update(ModelMap modelMap, @RequestParam("id") Integer id) {
-    modelMap.put("driver", driverService.findID(id));
-    return "resources/views/driverform";
+  @RequestMapping(value = "/driver/add", method = RequestMethod.GET)
+  public ModelAndView add() {
+      return  new ModelAndView("resources/views/driverform","driver",new Driver());
   }
+
+  @RequestMapping(value = "/driver/do-add", method = RequestMethod.POST)
+  public String doAdd(@ModelAttribute("driver") Driver driver) {
+    System.out.println(driver.toString());
+      driverService.insert(driver);
+    return "redirect:/driver";
+  }
+
+  @RequestMapping(value = "/driver/edit", method = RequestMethod.GET)
+  public ModelAndView edit( @RequestParam("id") Integer id) {
+      return  new ModelAndView("resources/views/driverform","driver",driverService.findID(id));
+  }
+
 
 
 }

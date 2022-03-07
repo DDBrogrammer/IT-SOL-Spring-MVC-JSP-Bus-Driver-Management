@@ -36,7 +36,7 @@ public class DriverDao {
     public boolean insert(Driver student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.save(student);
+            session.saveOrUpdate(student);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
