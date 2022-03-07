@@ -15,7 +15,7 @@
   <table class="table table-striped table-dark" id="table-data">
     <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Action</th>
       <th scope="col">Id</th>
       <th scope="col">Khoảng cách</th>
       <th scope="col">Tổng số lượt</th>

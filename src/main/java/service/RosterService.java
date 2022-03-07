@@ -1,10 +1,19 @@
 package service;
 
 import entity.Driver;
+import entity.FERoster;
 import entity.Roster;
+import entity.Route;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import repository.DriverDao;
 import repository.RosterDao;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -12,14 +21,18 @@ import java.util.List;
 @Service
 public class RosterService {
     RosterDao rosterDao = new RosterDao();
-    public ArrayList<Roster> getListRoster() {
-        for(Roster r:rosterDao.getAll()){
-            System.out.println(r.toString());
-        }
-        for(Driver d: rosterDao.getAllDriver()){
-            System.out.println(d.toString());
-        }
-        return (ArrayList<Roster>) rosterDao.getAll();
+    repository.DriverDao driverDao=new DriverDao();
+
+    public ArrayList<FERoster> getListRoster() {
+        ArrayList<FERoster> feRosters=new ArrayList<FERoster>();
+        List<Driver> drivers=driverDao.getAll();
+        ArrayList<Roster> tempRosters=new ArrayList<Roster>();
+        FERoster feRoster=new FERoster();
+      for(Driver driver:drivers){
+        feRoster=new FERoster(driver,getListRouteByDriverID(driver.getId()));
+         feRosters.add(feRoster);
+    }
+      return feRosters;
     }
 
     public Roster findID(int id) {
@@ -35,6 +48,16 @@ public class RosterService {
     public ArrayList<Roster> getListRosterByDriverID(int id ){
         return (ArrayList<Roster>) rosterDao.getRostersByDriverId(id);
     }
+
+    public ArrayList<Route> getListRouteByDriverID(int id){
+      ArrayList<Route> routes=new ArrayList<Route>();
+      ArrayList<Roster> rosters = getListRosterByDriverID(id);
+      for(Roster r:rosters){
+        routes.add(r.getRoute());
+      }
+      return routes;
+    }
+
     public List<Driver> getListDriver(){
         return rosterDao.getAllDriver();
     }
@@ -65,4 +88,9 @@ public class RosterService {
                 return -1;
         }
     }
+
+
+
+
 }
+

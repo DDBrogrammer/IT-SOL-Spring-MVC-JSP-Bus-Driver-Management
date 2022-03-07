@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import service.DriverService;
 import service.RosterService;
 
 @Controller
@@ -14,7 +13,7 @@ public class RosterController {
 
   @RequestMapping(value = "/roster", method = RequestMethod.GET)
   public String index(ModelMap modelMap) {
-    modelMap.put("rosters", rosterService.getListRoster());
+    modelMap.put("feRosters", rosterService.getListRoster());
     return "resources/views/roster";
   }
 

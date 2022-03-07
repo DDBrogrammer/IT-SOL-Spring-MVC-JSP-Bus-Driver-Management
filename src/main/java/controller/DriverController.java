@@ -24,7 +24,6 @@ public class DriverController {
     return "redirect:/driver";
   }
 
-
   @RequestMapping(value = "/driver/update", method = RequestMethod.GET)
   public String update(ModelMap modelMap, @RequestParam("id") Integer id) {
     modelMap.put("driver", driverService.findID(id));
