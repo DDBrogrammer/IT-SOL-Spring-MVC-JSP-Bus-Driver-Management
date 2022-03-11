@@ -73,6 +73,14 @@ public class Driver implements Serializable {
         this.skill = skill;
     }
 
+  public Driver(Integer id, String name, String address, String phone, String skill) {
+    this.name = name;
+    this.address = address;
+    this.phone = phone;
+    this.skill = skill;
+    this.id=id;
+  }
+
     public Driver() {
 
     }

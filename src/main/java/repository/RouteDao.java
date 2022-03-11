@@ -32,16 +32,29 @@ public class RouteDao {
         return null;
     }
 
-    public boolean insert(Route route) {
+    public boolean save(Route route) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.saveOrUpdate(route);
+            session.save(route);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
+          System.out.println(e);
         }
         return false;
     }
+
+  public boolean update(Route route) {
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      session.beginTransaction();
+      session.update(route);
+      session.getTransaction().commit();
+      return true;
+    } catch (HibernateException e) {
+      System.out.println(e);
+    }
+    return false;
+  }
 
 
     public boolean removeRoute(int id) {

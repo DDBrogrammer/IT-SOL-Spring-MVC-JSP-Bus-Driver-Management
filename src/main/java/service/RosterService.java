@@ -40,8 +40,6 @@ public class RosterService {
     }
 
     public boolean insert(Roster roster) {
-        List<Roster> rosters = rosterDao.getAll();
-
         return rosterDao.insert(roster);
     }
 

@@ -27,9 +27,9 @@
       <tr>
         <td>
           <a type="button" class="btn btn-primary"
-             href="">Update</a>
+             href="${pageContext.request.contextPath}/roster/edit?id=${feRoster.driver.id}">Update</a>
           <a type="button" class="btn btn-danger"
-             href="">Delete</a>
+             href="${pageContext.request.contextPath}/roster/delete?id=${feRoster.driver.id}">Delete</a>
         </td>
         <td class="id">${feRoster.driver.id}</td>
         <td class="name">${feRoster.driver.name}</td>

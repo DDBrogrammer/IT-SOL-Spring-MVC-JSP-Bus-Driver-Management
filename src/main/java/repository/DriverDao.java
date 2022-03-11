@@ -33,10 +33,10 @@ public class DriverDao {
         return null;
     }
 
-    public boolean insert(Driver student) {
+    public boolean update(Driver student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.saveOrUpdate(student);
+            session.update(student);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -44,6 +44,18 @@ public class DriverDao {
         }
         return false;
     }
+
+  public boolean save(Driver student) {
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      session.beginTransaction();
+      session.save(student);
+      session.getTransaction().commit();
+      return true;
+    } catch (HibernateException e) {
+      System.out.println(e);
+    }
+    return false;
+  }
 
     public boolean removeDriver(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();

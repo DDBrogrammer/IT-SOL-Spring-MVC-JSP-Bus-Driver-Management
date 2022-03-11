@@ -26,7 +26,7 @@
       <tr>
         <td>
           <a type="button" class="btn btn-primary"
-             href="">Update</a>
+             href="${pageContext.request.contextPath}/route/edit?id=${route.id}">Update</a>
           <a type="button" class="btn btn-danger"
              href="${pageContext.request.contextPath}/route/delete?id=${route.id}">Delete</a>
         </td>

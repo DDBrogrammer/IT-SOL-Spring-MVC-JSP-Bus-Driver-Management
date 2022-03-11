@@ -32,20 +32,22 @@ public class DriverController {
       return  new ModelAndView("resources/views/driverform","driver",new Driver());
   }
 
-  @RequestMapping(value = "/driver/do-add", method = RequestMethod.POST)
+  @RequestMapping(value = "/driver/add", method = RequestMethod.POST)
   public String doAdd(@ModelAttribute("driver") Driver driver) {
-    System.out.println(driver.toString());
-      driverService.insert(driver);
+  Driver tempDriver=new Driver(driver.getName(),driver.getAddress(),driver.getPhone(),driver.getSkill());
+    System.out.println(driverService.save(tempDriver));
+    return "redirect:/driver";
+  }
+
+  @RequestMapping(value = "/driver/edit", method = RequestMethod.POST)
+  public String doEdit(@ModelAttribute("driver") Driver driver) {
+    driverService.update(driver);
     return "redirect:/driver";
   }
 
   @RequestMapping(value = "/driver/edit", method = RequestMethod.GET)
-  public ModelAndView edit( @RequestParam("id") Integer id, ModelMap md) {
-      md.put("id",id);
-      return
-        new ModelAndView("resources/views/driverform","driver",driverService.findID(id));
+  public ModelAndView edit( @RequestParam("id") Integer id) {
+      return new ModelAndView("resources/views/driverform","driver",driverService.findID(id));
   }
-
-
 
 }

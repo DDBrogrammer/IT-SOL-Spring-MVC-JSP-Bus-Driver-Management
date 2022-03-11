@@ -1,6 +1,6 @@
 package controller;
 
-import entity.Driver;
+
 import entity.Route;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,14 +30,22 @@ public class RouteController {
 
   @RequestMapping(value = "/route/add", method = RequestMethod.GET)
   public ModelAndView add() {
-    return  new ModelAndView("resources/views/routeform","route",new Route());
+    return  new ModelAndView("resources/views/routeform","route",new Route(0.0,0));
   }
 
-  @RequestMapping(value = "/route/do-add", method = RequestMethod.POST)
+  @RequestMapping(value = "/route/add", method = RequestMethod.POST)
   public String doAdd(@ModelAttribute("route") Route route) {
-    System.out.println(route.toString());
-    routeService.insert(route);
+    routeService.save(route);
     return "redirect:/route";
   }
-
+  @RequestMapping(value = "/route/edit", method = RequestMethod.GET)
+  public ModelAndView edit( @RequestParam("id") Integer id, ModelMap md) {
+    return
+      new ModelAndView("resources/views/routeform","route",routeService.findID(id));
+  }
+  @RequestMapping(value = "/route/edit", method = RequestMethod.POST)
+  public String doEdit(@ModelAttribute("route") Route route) {
+    routeService.update(route);
+    return "redirect:/route";
+  }
 }

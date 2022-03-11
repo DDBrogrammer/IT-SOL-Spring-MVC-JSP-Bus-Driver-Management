@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 
 </head>
-<body>
+<body class="bg-dark text-white">
 
 <div class="container ">
  <%-- <a type="button" class="btn btn-primary btn-md ms-4 mt-5" href="${pageContext.request.contextPath}/add-driver">Add Driver</a>--%>

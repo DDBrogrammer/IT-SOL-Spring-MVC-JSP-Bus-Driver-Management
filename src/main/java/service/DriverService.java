@@ -18,16 +18,20 @@ public class DriverService {
         return driverDao.findById(id);
     }
 
-    public boolean insert(Driver driver) {
-        List<Driver> drivers = driverDao.getAll();
-        drivers.sort((o1, o2) -> o1.getId() < o2.getId() ? 1 : -1);
-        int id = drivers.get(0).getId() + 1;
-        driver.setId(id);
-        if (driver.getName() == null) {
-            return false;
-        }
-        return driverDao.insert(driver);
+    public boolean update(Driver driver) {
+        return driverDao.update(driver);
     }
+
+  public boolean save(Driver driver) {
+    List<Driver> drivers = driverDao.getAll();
+    drivers.sort((o1, o2) -> o1.getId() < o2.getId() ? 1 : -1);
+    int id = drivers.get(0).getId() + 1;
+    driver.setId(id);
+    if (driver.getName() == null) {
+      return false;
+    }
+    return driverDao.save(driver);
+  }
 
     public boolean removeStudent(int id) {
         return driverDao.removeDriver(id);
