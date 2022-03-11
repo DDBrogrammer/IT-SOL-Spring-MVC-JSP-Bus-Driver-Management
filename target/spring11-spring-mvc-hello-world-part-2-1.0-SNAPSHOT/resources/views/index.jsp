@@ -6,13 +6,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trang chủ </title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <style>
+.main{height: auto;
+width: 100%;}
+  </style>
 </head>
-<body>
-<h1>Quản lý phân công xe bus</h1>
-<a href="${pageContext.request.contextPath}/driver" class="btn btn-danger"> quản lý lái xe</a>
+<body class="bg-dark text-white">
 
-<a href="${pageContext.request.contextPath}/route" class="btn btn-danger"> Quản lý tuyến đường </a>
+<div class="row bg-dark" >
+  <h1 class="col-12 text-center">Quản lý phân công xe bus</h1>
+  <div class=" px-5 col-4" ><a href="${pageContext.request.contextPath}/driver" class=" mx-5 mb-5 col-4 btn btn-danger"> Quản lý lái xe</a></div>
+  <div class=" px-5 col-4" > <a href="${pageContext.request.contextPath}/route" class=" mx-5 mb-5 col-4 btn btn-danger"> Quản lý tuyến đường </a> </div>
+  <div class=" px-5 col-4" > <a href="${pageContext.request.contextPath}/roster" class=" mx-5 mb-5 col-4 btn btn-danger"> Quản lý bảng phân công </a></div>
 
-<a href="${pageContext.request.contextPath}/roster" class="btn btn-danger"> Quản lý bảng phân công </a>
+</div>
+<div class="main ">
+</div>
 </body>
 </html>

@@ -11,6 +11,7 @@
 <body>
 <div class="col-3"></div>
 <form class="col-3 needs-validation" action="${pageContext.request.contextPath}/driver/do-add" modelAttribute="driver" method="POST">
+  <input path="id" id="id" name="id"  value="${driver.id}" hidden>
   <div class="form-group mb-3">
     <label for="name">Name</label>
     <input path="name" type="text" class="form-control" id="name" placeholder="Enter name" name="name"
@@ -25,8 +26,9 @@
            maxlength="50"  value="${driver.address}">
     <span id="address_error"></span>
   </div>
+
   <div class="form-group mb-3">
-    <label for="phone">Mobie phone</label>
+    <label for="phone">Phone</label>
     <input path="phone" type="number" class="form-control" id="phone" placeholder="Enter phone" value="${driver.phone}
            name="phone" required >
     <span id="phone_error"></span>

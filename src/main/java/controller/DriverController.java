@@ -40,8 +40,10 @@ public class DriverController {
   }
 
   @RequestMapping(value = "/driver/edit", method = RequestMethod.GET)
-  public ModelAndView edit( @RequestParam("id") Integer id) {
-      return  new ModelAndView("resources/views/driverform","driver",driverService.findID(id));
+  public ModelAndView edit( @RequestParam("id") Integer id, ModelMap md) {
+      md.put("id",id);
+      return
+        new ModelAndView("resources/views/driverform","driver",driverService.findID(id));
   }
 
 
