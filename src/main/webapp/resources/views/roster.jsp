@@ -39,15 +39,17 @@
            <tr>
              <th scope="col">Id</th>
              <th scope="col">Khoảng cách</th>
+             <th scope="col">Số điểm dừng</th>
              <th scope="col">Tổng số lượt</th>
            </tr>
            </thead>
            <tbody>
-           <c:forEach var="route" items="${feRoster.routes}">
+           <c:forEach var="feRoute" items="${feRoster.feRoutes}">
              <tr>
-               <td class="id">${route.id}</td>
-               <td class="distance">${route.distance}</td>
-               <td class="total-bus-stop">${route.totalBusStop}</td>
+               <td class="id">${feRoute.route.id}</td>
+               <td class="distance">${feRoute.route.distance}</td>
+               <td class="total-bus-stop">${feRoute.route.totalBusStop}</td>
+               <td class="total-bus-stop">${feRoute.quantity}</td>
              </tr>
            </c:forEach>
            </tbody>
@@ -59,7 +61,7 @@
     </tbody>
   </table>
     <a type="button" class="btn btn-primary"
-       href="">Add</a>
+       href="${pageContext.request.contextPath}/roster/add">Add</a>
 </div>
 
 </body>

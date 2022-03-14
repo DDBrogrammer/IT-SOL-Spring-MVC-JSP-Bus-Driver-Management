@@ -1,9 +1,7 @@
 package service;
 
-import entity.Driver;
-import entity.FERoster;
-import entity.Roster;
-import entity.Route;
+import entity.*;
+import entity.FeRoster;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,13 +21,13 @@ public class RosterService {
     RosterDao rosterDao = new RosterDao();
     repository.DriverDao driverDao=new DriverDao();
 
-    public ArrayList<FERoster> getListRoster() {
-        ArrayList<FERoster> feRosters=new ArrayList<FERoster>();
+    public ArrayList<FeRoster> getListFeRoster() {
+        ArrayList<FeRoster> feRosters=new ArrayList<FeRoster>();
         List<Driver> drivers=rosterDao.getAllDriver();
         ArrayList<Roster> tempRosters=new ArrayList<Roster>();
-        FERoster feRoster=new FERoster();
+        FeRoster feRoster=new FeRoster();
       for(Driver driver:drivers){
-        feRoster=new FERoster(driver,getListRouteByDriverID(driver.getId()));
+        feRoster=new FeRoster(driver,getListFeRouteByDriverID(driver.getId()));
          feRosters.add(feRoster);
     }
       return feRosters;
@@ -47,22 +45,25 @@ public class RosterService {
         return (ArrayList<Roster>) rosterDao.getRostersByDriverId(id);
     }
 
-    public ArrayList<Route> getListRouteByDriverID(int id){
-      ArrayList<Route> routes=new ArrayList<Route>();
+    public ArrayList<FeRoute> getListFeRouteByDriverID(int id){
+      ArrayList<FeRoute> routes=new ArrayList<FeRoute>();
       ArrayList<Roster> rosters = getListRosterByDriverID(id);
       for(Roster r:rosters){
-        routes.add(r.getRoute());
+        FeRoute feRoster=new FeRoute(r.getRoute(),r.getTotalRoute());
+        routes.add(feRoster);
       }
       return routes;
     }
 
+    public Driver getDriverById(int id ){
+      return driverDao.findById(id);
+    }
     public List<Driver> getListDriver(){
         return rosterDao.getAllDriver();
     }
 
     public List<Driver> getListRemainDriver(){
-      List<Driver> remainDrivers= new ArrayList<Driver>();
-      return remainDrivers;
+      return rosterDao.getRemainDriver();
     }
 
     public boolean removeRoster(int id) {
