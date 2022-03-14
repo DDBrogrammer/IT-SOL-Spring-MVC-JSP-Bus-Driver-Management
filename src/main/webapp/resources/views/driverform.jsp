@@ -45,7 +45,7 @@
     </select>
     <span id="driveLevel_error"></span>
   </div>
-  <button type="submit" class="btn btn-info" id="saves-button">Save</button>
+  <button type="submit" class="btn btn-info" id="saves-button">Lưu</button>
 </form>
 
 <div class="col-3"></div>

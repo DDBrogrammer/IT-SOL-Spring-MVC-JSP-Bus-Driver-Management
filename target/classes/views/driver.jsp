@@ -28,9 +28,9 @@
       <tr>
         <td>
           <a type="button" class="btn btn-primary"
-             href="${pageContext.request.contextPath}/driver/edit?id=${driver.id}">Update</a>
-          <a type="button" class="btn btn-danger"
-             href="${pageContext.request.contextPath}/driver/delete?id=${driver.id}">Delete</a>
+             href="${pageContext.request.contextPath}/driver/edit?id=${driver.id}">Sửa</a>
+          <a type="button" class="btn btn-danger"e
+             href="${pageContext.request.contextPath}/driver/delete?id=${driver.id}">Xóa</a>
         </td>
         <td class="id">${driver.id}</td>
         <td class="fullName">${driver.name}</td>
@@ -41,7 +41,7 @@
     </c:forEach>
     </tbody>
   </table>
-   <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath}/driver/add" >Add</a>
+   <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath}/driver/add" >Thêm</a>
 </div>
 
 </body>

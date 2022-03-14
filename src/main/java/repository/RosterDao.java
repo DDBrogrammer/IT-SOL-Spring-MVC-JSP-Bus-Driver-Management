@@ -40,6 +40,15 @@ public class RosterDao {
         return null;
     }
 
+    public List<Driver> getRemainDriver(){
+      try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        return session.createQuery(" select d from Driver d where d not in (select distinct r.driver from Roster r )").list();
+      } catch (HibernateException e) {
+        e.printStackTrace();
+      }
+      return null;
+    }
+
     public Roster findById(int id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<Roster> query = session.createQuery("select s from Roster s where s.id = :p_roster_id");

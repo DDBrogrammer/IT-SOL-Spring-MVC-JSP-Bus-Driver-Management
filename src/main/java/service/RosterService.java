@@ -25,7 +25,7 @@ public class RosterService {
 
     public ArrayList<FERoster> getListRoster() {
         ArrayList<FERoster> feRosters=new ArrayList<FERoster>();
-        List<Driver> drivers=driverDao.getAll();
+        List<Driver> drivers=rosterDao.getAllDriver();
         ArrayList<Roster> tempRosters=new ArrayList<Roster>();
         FERoster feRoster=new FERoster();
       for(Driver driver:drivers){
@@ -60,9 +60,15 @@ public class RosterService {
         return rosterDao.getAllDriver();
     }
 
+    public List<Driver> getListRemainDriver(){
+      List<Driver> remainDrivers= new ArrayList<Driver>();
+      return remainDrivers;
+    }
+
     public boolean removeRoster(int id) {
         return rosterDao.removeRoster(id);
     }
+
 
     static class NumberOfRouteComparator implements Comparator<Driver> {
       private  RosterService rosterService=new RosterService();
